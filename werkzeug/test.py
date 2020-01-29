@@ -708,7 +708,7 @@ class Client(object):
             secure,
             httponly,
             charset,
-            sametime=samesite)
+            samesite=samesite)
         environ = create_environ(path, base_url='http://' + server_name)
         headers = [('Set-Cookie', header)]
         self.cookie_jar.extract_wsgi(environ, headers)
