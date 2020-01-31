@@ -692,14 +692,23 @@ class Client(object):
 
     def set_cookie(self, server_name, key, value='', max_age=None,
                    expires=None, path='/', domain=None, secure=None,
-                   httponly=False, charset='utf-8'):
+                   httponly=False, samesite=None, charset='utf-8'):
         """Sets a cookie in the client's cookie jar.  The server name
         is required and has to match the one that is also passed to
         the open call.
         """
         assert self.cookie_jar is not None, 'cookies disabled'
-        header = dump_cookie(key, value, max_age, expires, path, domain,
-                             secure, httponly, charset)
+        header = dump_cookie(
+            key,
+            value,
+            max_age,
+            expires,
+            path,
+            domain,
+            secure,
+            httponly,
+            charset,
+            samesite=samesite)
         environ = create_environ(path, base_url='http://' + server_name)
         headers = [('Set-Cookie', header)]
         self.cookie_jar.extract_wsgi(environ, headers)
