@@ -13,7 +13,7 @@ with io.open('werkzeug/__init__.py', 'rt', encoding='utf8') as f:
 
 setup(
     name='Werkzeug',
-    version=version,
+    version='0.14.1',
     url='https://www.palletsprojects.org/p/werkzeug/',
     license='BSD',
     author='Armin Ronacher',
